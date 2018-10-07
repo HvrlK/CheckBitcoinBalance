@@ -16,17 +16,18 @@ class CheckBitcoinBalanceViewController: UIViewController {
     
     @IBOutlet weak var bitcoinAddressTextField: UITextField!
     @IBOutlet weak var checkBalanceButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Properties
     
     var viewModel = CheckBitcoinBalanceViewModel()
-    
     var disposeBag = DisposeBag()
     
     //MARK: - Methods
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         bitcoinAddressTextField.rx.text.orEmpty.bind(to: viewModel.addressString).disposed(by: disposeBag)
         checkBalanceButton.rx.tap.asObservable().filter( { (_) -> Bool in
             return true
@@ -48,19 +49,12 @@ class CheckBitcoinBalanceViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func checkBalance() {
-        DispatchQueue.global().async {
-            self.viewModel.fetchBitcoin(completion: { bitcoin in
-                guard let bitcoin = bitcoin else {
-                    self.showAlert(title: "Invalid Address")
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.showAlert(title: "\(bitcoin.balance) BTC")
-                }
-            })
+    private func switchActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = !self.activityIndicator.isHidden
+            
         }
     }
-
+    
 }
 
