@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import Alamofire
 import SwiftyJSON
 
@@ -15,9 +16,9 @@ class CheckBitcoinBalanceViewModel {
     
     //MARK: - Properties
     
-    var addressString = Variable<String>("")
-    var isValid = Variable<Bool>(false)
-    var bitcoin = Variable<Bitcoin?>(nil)
+    var addressString = BehaviorRelay<String>(value: "")
+    var isValid = BehaviorRelay<Bool>(value: false)
+    var bitcoin = BehaviorRelay<Bitcoin?>(value: nil)
     var disposeBag = DisposeBag()
     
     //MARK: - Methods
@@ -28,7 +29,7 @@ class CheckBitcoinBalanceViewModel {
         })
             .subscribe { _ in
                 self.fetchBitcoin { (bitcoin) in
-                    self.bitcoin.value = bitcoin
+                    self.bitcoin.accept(bitcoin)
                 }
             }
             .disposed(by: disposeBag)
@@ -37,7 +38,7 @@ class CheckBitcoinBalanceViewModel {
     func validBitcoinAddress() {
         let regularExpression = "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"
         let addressTest = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        self.isValid.value = addressTest.evaluate(with: addressString.value)
+        self.isValid.accept(addressTest.evaluate(with: addressString.value))
     }
     
     func fetchBitcoin(completion: @escaping (Bitcoin?) -> Void) {
