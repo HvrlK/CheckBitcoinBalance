@@ -27,7 +27,25 @@ class CheckBitcoinBalanceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        bitcoinAddressTextField.rx.text.orEmpty.bind(to: viewModel.addressString).disposed(by: disposeBag)
+        checkBalanceButton.rx.tap.asObservable().filter( { (_) -> Bool in
+            return true
+        })
+            .subscribe { _ in
+                if self.viewModel.isValidBitcoinAddress() {
+                    self.showAlert(title: "Valid")
+                } else {
+                    self.showAlert(title: "Invalid")
+                }
+        }
+        .disposed(by: disposeBag)
+    }
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+        alert.addAction(dismissAction)
+        present(alert, animated: true, completion: nil)
     }
 
 
