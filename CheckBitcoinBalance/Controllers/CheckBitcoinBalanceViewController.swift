@@ -38,10 +38,9 @@ class CheckBitcoinBalanceViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        _ = viewModel.isValid.asObservable().filter({ (isValid) -> Bool in
+        _ = viewModel.isValid.asObservable().skip(1).filter({ (isValid) -> Bool in
             if isValid {
                 self.switchActivityIndicator()
-
             }
             return !isValid
         })
@@ -50,7 +49,7 @@ class CheckBitcoinBalanceViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        _ = viewModel.bitcoin.asObservable().subscribe { _ in
+        _ = viewModel.bitcoin.asObservable().skip(1).subscribe { _ in
             self.switchActivityIndicator()
             guard let bitcoin = self.viewModel.bitcoin.value else {
                 self.showAlert(title: "Invalid Address")
@@ -71,7 +70,6 @@ class CheckBitcoinBalanceViewController: UIViewController {
     private func switchActivityIndicator() {
         DispatchQueue.main.async {
             self.activityIndicator.isHidden = !self.activityIndicator.isHidden
-            
         }
     }
     
