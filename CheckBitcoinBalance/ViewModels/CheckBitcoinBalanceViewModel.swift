@@ -8,6 +8,8 @@
 
 import Foundation
 import RxSwift
+import Alamofire
+import SwiftyJSON
 
 class CheckBitcoinBalanceViewModel {
     
@@ -21,6 +23,18 @@ class CheckBitcoinBalanceViewModel {
         let regularExpression = "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"
         let addressTest = NSPredicate(format: "SELF MATCHES %@", regularExpression)
         return addressTest.evaluate(with: addressString.value)
+    }
+    
+    func fetchBitcoin(completion: @escaping (Bitcoin?) -> Void) {
+        Alamofire.request("https://blockexplorer.com/api/addr/\(addressString.value)")
+            .responseJSON { response in
+                guard response.result.isSuccess, let value = response.result.value else {
+                    print("Error while fetching: \(String(describing: response.result.error))")
+                    completion(nil)
+                    return
+                }
+                completion(Bitcoin(json: JSON(value)))
+        }
     }
     
 }
