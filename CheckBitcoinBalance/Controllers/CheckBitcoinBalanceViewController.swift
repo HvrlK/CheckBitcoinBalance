@@ -29,17 +29,36 @@ class CheckBitcoinBalanceViewController: UIViewController {
         super.viewDidLoad()
         
         bitcoinAddressTextField.rx.text.orEmpty.bind(to: viewModel.addressString).disposed(by: disposeBag)
-        checkBalanceButton.rx.tap.asObservable().filter( { (_) -> Bool in
+        
+        checkBalanceButton.rx.tap.asObservable().filter({ (_) -> Bool in
             return true
         })
             .subscribe { _ in
-                if self.viewModel.isValidBitcoinAddress() {
-                    self.checkBalance()
-                } else {
-                    self.showAlert(title: "Invalid Address")
-                }
-        }
-        .disposed(by: disposeBag)
+                self.viewModel.validBitcoinAddress()
+            }
+            .disposed(by: disposeBag)
+        
+        _ = viewModel.isValid.asObservable().filter({ (isValid) -> Bool in
+            if isValid {
+                self.switchActivityIndicator()
+
+            }
+            return !isValid
+        })
+            .subscribe { _ in
+                self.showAlert(title: "Invalid Address")
+            }
+            .disposed(by: disposeBag)
+        
+        _ = viewModel.bitcoin.asObservable().subscribe { _ in
+            self.switchActivityIndicator()
+            guard let bitcoin = self.viewModel.bitcoin.value else {
+                self.showAlert(title: "Invalid Address")
+                return
+            }
+            self.showAlert(title: "\(bitcoin.balance) BTC")
+            }
+            .disposed(by: disposeBag)
     }
     
     func showAlert(title: String) {

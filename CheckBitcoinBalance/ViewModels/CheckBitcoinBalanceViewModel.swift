@@ -16,13 +16,28 @@ class CheckBitcoinBalanceViewModel {
     //MARK: - Properties
     
     var addressString = Variable<String>("")
+    var isValid = Variable<Bool>(false)
+    var bitcoin = Variable<Bitcoin?>(nil)
+    var disposeBag = DisposeBag()
     
     //MARK: - Methods
     
-    func isValidBitcoinAddress() -> Bool {
+    init() {
+        _ = isValid.asObservable().filter({ (isValid) -> Bool in
+            return isValid
+        })
+            .subscribe { _ in
+                self.fetchBitcoin { (bitcoin) in
+                    self.bitcoin.value = bitcoin
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func validBitcoinAddress() {
         let regularExpression = "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"
         let addressTest = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return addressTest.evaluate(with: addressString.value)
+        self.isValid.value = addressTest.evaluate(with: addressString.value)
     }
     
     func fetchBitcoin(completion: @escaping (Bitcoin?) -> Void) {
@@ -33,7 +48,12 @@ class CheckBitcoinBalanceViewModel {
                     completion(nil)
                     return
                 }
-                completion(Bitcoin(json: JSON(value)))
+                let bitcoin = Bitcoin(json: JSON(value))
+                guard bitcoin.address != "" else {
+                    completion(nil)
+                    return
+                }
+                completion(bitcoin)
         }
     }
     
