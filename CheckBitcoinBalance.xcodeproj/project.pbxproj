@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		36B34415CBD0522181122135 /* Pods_CheckBitcoinBalance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C670359EC7CA305B1D691AE8 /* Pods_CheckBitcoinBalance.framework */; };
 		DDFFD31A216A4B1600951172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD319216A4B1600951172 /* AppDelegate.swift */; };
-		DDFFD31C216A4B1600951172 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD31B216A4B1600951172 /* ViewController.swift */; };
+		DDFFD31C216A4B1600951172 /* CheckBitcoinBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD31B216A4B1600951172 /* CheckBitcoinBalanceViewController.swift */; };
 		DDFFD31F216A4B1600951172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD31D216A4B1600951172 /* Main.storyboard */; };
 		DDFFD321216A4B1800951172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD320216A4B1800951172 /* Assets.xcassets */; };
 		DDFFD324216A4B1800951172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD322216A4B1800951172 /* LaunchScreen.storyboard */; };
 		DDFFD334216A4CDA00951172 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD333216A4CDA00951172 /* Bitcoin.swift */; };
+		DDFFD336216A4D7800951172 /* CheckBitcoinBalanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD335216A4D7800951172 /* CheckBitcoinBalanceViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +22,13 @@
 		C670359EC7CA305B1D691AE8 /* Pods_CheckBitcoinBalance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CheckBitcoinBalance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFFD316216A4B1600951172 /* CheckBitcoinBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckBitcoinBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFFD319216A4B1600951172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDFFD31B216A4B1600951172 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DDFFD31B216A4B1600951172 /* CheckBitcoinBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitcoinBalanceViewController.swift; sourceTree = "<group>"; };
 		DDFFD31E216A4B1600951172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDFFD320216A4B1800951172 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDFFD323216A4B1800951172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDFFD325216A4B1800951172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDFFD333216A4CDA00951172 /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
+		DDFFD335216A4D7800951172 /* CheckBitcoinBalanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitcoinBalanceViewModel.swift; sourceTree = "<group>"; };
 		DE252F00F970A5AF642F3A3B /* Pods-CheckBitcoinBalance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckBitcoinBalance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckBitcoinBalance/Pods-CheckBitcoinBalance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +112,7 @@
 		DDFFD32D216A4B3E00951172 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDFFD31B216A4B1600951172 /* ViewController.swift */,
+				DDFFD31B216A4B1600951172 /* CheckBitcoinBalanceViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,6 +120,7 @@
 		DDFFD32E216A4B5300951172 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DDFFD335216A4D7800951172 /* CheckBitcoinBalanceViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -257,8 +260,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFFD336216A4D7800951172 /* CheckBitcoinBalanceViewModel.swift in Sources */,
 				DDFFD334216A4CDA00951172 /* Bitcoin.swift in Sources */,
-				DDFFD31C216A4B1600951172 /* ViewController.swift in Sources */,
+				DDFFD31C216A4B1600951172 /* CheckBitcoinBalanceViewController.swift in Sources */,
 				DDFFD31A216A4B1600951172 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
