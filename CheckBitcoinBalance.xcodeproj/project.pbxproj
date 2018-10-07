@@ -13,6 +13,7 @@
 		DDFFD31F216A4B1600951172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD31D216A4B1600951172 /* Main.storyboard */; };
 		DDFFD321216A4B1800951172 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD320216A4B1800951172 /* Assets.xcassets */; };
 		DDFFD324216A4B1800951172 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDFFD322216A4B1800951172 /* LaunchScreen.storyboard */; };
+		DDFFD334216A4CDA00951172 /* Bitcoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFFD333216A4CDA00951172 /* Bitcoin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DDFFD320216A4B1800951172 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDFFD323216A4B1800951172 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDFFD325216A4B1800951172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDFFD333216A4CDA00951172 /* Bitcoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitcoin.swift; sourceTree = "<group>"; };
 		DE252F00F970A5AF642F3A3B /* Pods-CheckBitcoinBalance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CheckBitcoinBalance.release.xcconfig"; path = "Pods/Target Support Files/Pods-CheckBitcoinBalance/Pods-CheckBitcoinBalance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 		DDFFD32B216A4B2A00951172 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDFFD333216A4CDA00951172 /* Bitcoin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFFD334216A4CDA00951172 /* Bitcoin.swift in Sources */,
 				DDFFD31C216A4B1600951172 /* ViewController.swift in Sources */,
 				DDFFD31A216A4B1600951172 /* AppDelegate.swift in Sources */,
 			);
@@ -404,7 +408,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SWL59DHLX;
-				INFOPLIST_FILE = CheckBitcoinBalance/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CheckBitcoinBalance/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,7 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SWL59DHLX;
-				INFOPLIST_FILE = CheckBitcoinBalance/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CheckBitcoinBalance/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
