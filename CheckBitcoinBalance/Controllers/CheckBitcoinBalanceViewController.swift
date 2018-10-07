@@ -33,9 +33,9 @@ class CheckBitcoinBalanceViewController: UIViewController {
         })
             .subscribe { _ in
                 if self.viewModel.isValidBitcoinAddress() {
-                    self.showAlert(title: "Valid")
+                    self.checkBalance()
                 } else {
-                    self.showAlert(title: "Invalid")
+                    self.showAlert(title: "Invalid Address")
                 }
         }
         .disposed(by: disposeBag)
@@ -47,7 +47,20 @@ class CheckBitcoinBalanceViewController: UIViewController {
         alert.addAction(dismissAction)
         present(alert, animated: true, completion: nil)
     }
-
+    
+    func checkBalance() {
+        DispatchQueue.global().async {
+            self.viewModel.fetchBitcoin(completion: { bitcoin in
+                guard let bitcoin = bitcoin else {
+                    self.showAlert(title: "Invalid Address")
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.showAlert(title: "\(bitcoin.balance) BTC")
+                }
+            })
+        }
+    }
 
 }
 
