@@ -54,14 +54,62 @@
 		DDFFD318216A4B1600951172 /* CheckBitcoinBalance */ = {
 			isa = PBXGroup;
 			children = (
-				DDFFD319216A4B1600951172 /* AppDelegate.swift */,
-				DDFFD31B216A4B1600951172 /* ViewController.swift */,
-				DDFFD31D216A4B1600951172 /* Main.storyboard */,
-				DDFFD320216A4B1800951172 /* Assets.xcassets */,
-				DDFFD322216A4B1800951172 /* LaunchScreen.storyboard */,
-				DDFFD325216A4B1800951172 /* Info.plist */,
+				DDFFD32F216A4B7000951172 /* AppDelegate */,
+				DDFFD32B216A4B2A00951172 /* Models */,
+				DDFFD32E216A4B5300951172 /* ViewModels */,
+				DDFFD32D216A4B3E00951172 /* Controllers */,
+				DDFFD32C216A4B2C00951172 /* Views */,
+				DDFFD330216A4B7E00951172 /* Resources */,
 			);
 			path = CheckBitcoinBalance;
+			sourceTree = "<group>";
+		};
+		DDFFD32B216A4B2A00951172 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDFFD32C216A4B2C00951172 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFD31D216A4B1600951172 /* Main.storyboard */,
+				DDFFD322216A4B1800951172 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDFFD32D216A4B3E00951172 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFD31B216A4B1600951172 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDFFD32E216A4B5300951172 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DDFFD32F216A4B7000951172 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFD319216A4B1600951172 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		DDFFD330216A4B7E00951172 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DDFFD320216A4B1800951172 /* Assets.xcassets */,
+				DDFFD325216A4B1800951172 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
